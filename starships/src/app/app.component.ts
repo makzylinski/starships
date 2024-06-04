@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   private readonly appService = inject(AppService)
 
   ngOnInit(): void {
-    this.starships$ = this.appService.getPersonOrSpaceship(Entity.STARSHIPS, 3);
+    this.starships$ = this.appService.getPersonOrSpaceship(Entity.PEOPLE, 3);
 
     this.starships$.subscribe(e => console.log(e))
   }
