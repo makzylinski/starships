@@ -1,7 +1,7 @@
-export interface Spaceship {
-    message: string,
-    result: {
-        properties: {
+import { Entity } from "./entity";
+
+export interface Starship {
+
             model: string,
             starship_class: string,
             manufacturer: string,
@@ -19,11 +19,5 @@ export interface Spaceship {
             edited: string, // Date
             name: string,
             url: string    
-        },
-        description: string,
-        _id: string,
-        __v: number,
-        uid: string
-    },
- 
+    
 }

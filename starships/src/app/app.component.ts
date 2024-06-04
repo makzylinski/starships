@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppService } from './services/app.service';
-import { Entity } from './models/entity';
+import { Starship } from './models/starship';
+import { Person } from './models/person';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,17 @@ import { Entity } from './models/entity';
 })
 
 export class AppComponent implements OnInit {
-  starships$: Observable<null>;
+  people$: Observable<Person>;
+  starship$: Observable<Starship>
 
   private readonly appService = inject(AppService)
 
   ngOnInit(): void {
-    this.starships$ = this.appService.getPersonOrSpaceship(Entity.PEOPLE, 3);
+    this.people$ = this.appService.getPeople(3);
+    this.starship$ = this.appService.getStarships(10);
 
-    this.starships$.subscribe(e => console.log(e))
+    this.people$.subscribe(e => console.log(e));
+    this.starship$.subscribe(e => console.log(e));
   }
 
 }

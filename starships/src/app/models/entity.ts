@@ -1,4 +1,11 @@
-export enum Entity {
-    PEOPLE = 'people',
-    STARSHIPS = 'starships'
+export interface Entity {
+    message: string,
+    result: {
+        properties: {
+        },
+        description: string,
+        _id: string,
+        uid: string,
+        __v: number
+    }
 }
