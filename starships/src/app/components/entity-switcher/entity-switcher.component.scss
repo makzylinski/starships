@@ -6,15 +6,16 @@
     height: 140px;
     width: 90px;
     color: white;
+    cursor: pointer;
 
     mat-icon {
         font-size: 25px;
         transform: rotate(0.03deg);
     }
 
-    &__people {
-        border-bottom: 1px solid #6b6b6b;
-        
+    &__divider {
+        height: 1px;
+        background-color: #6b6b6b;
     }
 
     &__people,
@@ -25,11 +26,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        filter: brightness(75%);
+        filter: brightness(45%);
         &:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
             filter: brightness(100%);
         }
+    }
+
+    .active {
+        border: 1px solid #b3b3b3;
+        filter: brightness(100%);
     }
 }
