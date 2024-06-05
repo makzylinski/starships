@@ -1,0 +1,15 @@
+@if (entity$ | async; as entity) {
+    <mat-card class="entity-card">
+      <mat-card-header>
+        <mat-card-title> {{entity.name}} </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul class="entity-card__attributes-grid">
+          @for (item of attributesListItems; track $index) {
+            <li>{{item}}</li>
+          }
+        </ul>
+      </mat-card-content>
+
+    </mat-card>
+  }

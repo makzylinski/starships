@@ -1,0 +1,45 @@
+.entity-card {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white;
+    
+    width: 640px;
+    border: 1px solid #6b6b6b;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+    font-family: 'Orbitron', sans-serif;
+    overflow-wrap: break-word;
+
+    &__attributes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    mat-card-header {
+        background: rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid #6b6b6b;
+        padding-bottom: 16px;
+    }
+
+    mat-card-title {
+        font-size: 1.5em;
+        letter-spacing: 1px;
+    }
+
+    mat-card-subtitle {
+        font-size: 1em;
+        color: #b3b3b3;
+    }
+
+    mat-card-content {
+        font-size: 1em;
+    }
+  }

@@ -1,0 +1,9 @@
+.game {
+    background: radial-gradient(circle, rgba(10, 14, 34, 1) 0%, rgba(2, 2, 23, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    gap: 75px;
+}
