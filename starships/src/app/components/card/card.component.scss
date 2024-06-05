@@ -1,13 +1,22 @@
 .entity-card {
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: white;
-    height: 450px;
-    width: 340px;
+    
+    width: 640px;
     border: 1px solid #6b6b6b;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s;
     font-family: 'Orbitron', sans-serif;
+    overflow-wrap: break-word;
+
+    &__attributes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        list-style-type: none;
+        padding: 0;
+    }
 
     &:hover {
         transform: scale(1.05);
@@ -33,23 +42,4 @@
     mat-card-content {
         font-size: 1em;
     }
-
-    mat-card-actions {
-        display: flex;
-        justify-content: space-between;
-    }
   }
-  
-//   .entity-card mat-card-actions button {
-//     background: linear-gradient(45deg, #21d4fd, #b721ff);
-//     color: white;
-//     border: none;
-//     border-radius: 5px;
-//     padding: 10px 20px;
-//     cursor: pointer;
-//     transition: background 0.3s;
-//   }
-  
-//   .entity-card mat-card-actions button:hover {
-//     background: linear-gradient(45deg, #b721ff, #21d4fd);
-//   }
