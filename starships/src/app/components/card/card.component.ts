@@ -18,7 +18,7 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     this.entity$.pipe(
       take(1),
-      tap((entityInfo) => 
+      tap((entityInfo) =>
         this.attributesListItems = transformAttributesToListItems(entityInfo)
       )
     ).subscribe();

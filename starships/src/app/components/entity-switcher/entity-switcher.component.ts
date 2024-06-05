@@ -12,9 +12,9 @@ export class EntitySwitcherComponent {
 
   activeEntity = EntityEnum.PEOPLE;
   public get EntityEnum() {
-    return EntityEnum; 
+    return EntityEnum;
   }
 
   toggleEntity = (entity: EntityEnum) => this.activeEntity = entity;
-  
+
 }
