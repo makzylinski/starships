@@ -3,13 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './components/card/card.component';
 import { EntitySwitcherComponent } from './components/entity-switcher/entity-switcher.component';
 
 const COMPONENTS = [AppComponent, CardComponent, EntitySwitcherComponent];
-const IMPORTS = [BrowserModule, HttpClientModule, MatCardModule, MatButtonModule, MatIconModule];
+const IMPORTS = [BrowserModule, HttpClientModule, MatCardModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule];
 
 @NgModule({
   declarations: COMPONENTS,
