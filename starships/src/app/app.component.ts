@@ -19,9 +19,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.people$ = this.appService.getPeople(3);
     this.starship$ = this.appService.getStarships(10);
-
-    this.people$.subscribe(e => console.log(e));
-    this.starship$.subscribe(e => console.log(e));
   }
 
 }
