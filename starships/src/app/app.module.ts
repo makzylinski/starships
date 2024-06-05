@@ -5,18 +5,14 @@ import {MatCardModule} from '@angular/material/card';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './components/card/card.component';
+import { EntitySwitcherComponent } from './components/entity-switcher/entity-switcher.component';
+
+const COMPONENTS = [AppComponent, CardComponent, EntitySwitcherComponent];
+const IMPORTS = [BrowserModule, HttpClientModule, MatCardModule, MatButtonModule];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CardComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    MatCardModule,
-    MatButtonModule
-  ],
+  declarations: COMPONENTS,
+  imports: IMPORTS,
   providers: [],
   bootstrap: [AppComponent]
 })
