@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { EntityEnum } from 'src/app/models/entity.enum';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-entity-switcher',
@@ -8,13 +9,19 @@ import { EntityEnum } from 'src/app/models/entity.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class EntitySwitcherComponent {
+export class EntitySwitcherComponent implements OnInit {
 
   activeEntity = EntityEnum.PEOPLE;
   public get EntityEnum() {
     return EntityEnum;
   }
+  private readonly appService = inject(AppService)
 
-  toggleEntity = (entity: EntityEnum) => this.activeEntity = entity;
+  ngOnInit(): void {
+    // this.appService.fetchTwoCards(this.activeEntity)
+  }
 
+  toggleEntity = (entity: EntityEnum) => {
+    this.activeEntity = entity;
+  }
 }
