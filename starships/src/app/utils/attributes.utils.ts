@@ -1,8 +1,3 @@
-import { Observable } from "rxjs/internal/Observable";
-import { Person } from "../models/person";
-import { Starship } from "../models/starship";
-import { map } from "rxjs/operators";
-
 export const transformAttributesToListItems = (entity: any) => {
     const modifiedListItems = [];       // TODO type
     for (const [k, v] of Object.entries(entity)) {

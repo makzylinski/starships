@@ -1,0 +1,42 @@
+.switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    height: 140px;
+    width: 90px;
+    color: white;
+    cursor: pointer;
+
+    mat-icon {
+        font-size: 25px;
+        transform: rotate(0.03deg);
+    }
+
+    &__divider {
+        height: 1px;
+        background-color: #6b6b6b;
+    }
+
+    &__people,
+    &__starships {
+        height: 70px;
+        width: 100%;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        filter: brightness(45%);
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+            filter: brightness(100%);
+        }
+    }
+
+    .active {
+        border: 1px solid #b3b3b3;
+        filter: brightness(100%);
+    }
+}

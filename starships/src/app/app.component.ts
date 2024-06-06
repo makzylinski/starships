@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { AppService } from './services/app.service';
 import { Starship } from './models/starship';
 import { Person } from './models/person';
+import { EntityEnum } from './models/entity.enum';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,19 @@ import { Person } from './models/person';
 })
 
 export class AppComponent implements OnInit {
-  people$: Observable<Person>;
-  starship$: Observable<Starship>
+
+  cardOne$: Observable<any>;
+  cardTwo$: Observable<any>;
 
   private readonly appService = inject(AppService)
 
   ngOnInit(): void {
-    this.people$ = this.appService.getPeople(3);
-    this.starship$ = this.appService.getStarships(10);
+    this.fetchCards(EntityEnum.PEOPLE);
+  }
+
+  fetchCards = (type: EntityEnum): void => {
+    this.cardOne$ = this.appService.fetchCard(type);
+    this.cardTwo$ = this.appService.fetchCard(type);
   }
 
 }
