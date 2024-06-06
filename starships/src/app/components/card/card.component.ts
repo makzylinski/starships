@@ -9,6 +9,5 @@ import { Observable } from 'rxjs';
 })
 export class CardComponent {
   @Input() entity$: Observable<any>;
-  attributesListItems: any;
-
+  @Input() name: string;
 }

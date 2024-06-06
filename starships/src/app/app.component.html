@@ -1,10 +1,10 @@
 <div class="game">
     @if ((cardOne$ | async) && (cardTwo$ | async)) {
     <div>
-        <app-card [entity$]="cardOne$"></app-card>
+        <app-card [name]="'Player 1'" [entity$]="cardOne$"></app-card>
     </div>
     <div>
-        <app-card [entity$]="cardTwo$"></app-card>
+        <app-card [name]="'Player 2'" [entity$]="cardTwo$"></app-card>
     </div>
     <div class="game__button">
         <button mat-flat-button color="primary" (click)="fetchCards(defaultEntityType)">Play Again</button>
