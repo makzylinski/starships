@@ -7,7 +7,7 @@
         <app-card [entity$]="cardTwo$"></app-card>
     </div>
     <div class="game__button">
-        <button mat-flat-button color="primary">Play Again</button>
+        <button mat-flat-button color="primary" (click)="fetchCards(defaultEntityType)">Play Again</button>
     </div>
 
     } @else {

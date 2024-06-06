@@ -12,14 +12,14 @@ import { EntityEnum } from './models/entity.enum';
 })
 
 export class AppComponent implements OnInit {
-
+  defaultEntityType = EntityEnum.PEOPLE;
   cardOne$: Observable<any>;
   cardTwo$: Observable<any>;
 
   private readonly appService = inject(AppService)
 
   ngOnInit(): void {
-    this.fetchCards(EntityEnum.PEOPLE);
+    this.fetchCards(this.defaultEntityType);
   }
 
   fetchCards = (type: EntityEnum): void => {
