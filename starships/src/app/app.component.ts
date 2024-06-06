@@ -19,12 +19,12 @@ export class AppComponent implements OnInit {
   private readonly appService = inject(AppService)
 
   ngOnInit(): void {
-    this.fetchCards();
+    this.fetchCards(EntityEnum.PEOPLE);
   }
 
-  fetchCards = (): void => {
-    this.cardOne$ = this.appService.fetchCard(EntityEnum.PEOPLE);
-    this.cardTwo$ = this.appService.fetchCard(EntityEnum.PEOPLE);
+  fetchCards = (type: EntityEnum): void => {
+    this.cardOne$ = this.appService.fetchCard(type);
+    this.cardTwo$ = this.appService.fetchCard(type);
   }
 
 }

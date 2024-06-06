@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { Person } from '../models/person';
 import { Entity } from '../models/entity';
 import { EntityEnum, } from '../models/entity.enum';
@@ -18,12 +18,20 @@ export class AppService {
 
   private getPeople = (id: number): Observable<any> =>
     this.http.get<Entity>(`${this.baseURL}${EntityEnum.PEOPLE}/${id}`).pipe(
-      map(person => person.result.properties)
+      map(person => person.result.properties),
+      catchError((err, caught) => {
+        console.log(err, caught);
+        return ''
+      })
     );
 
   private getStarships = (id: number): Observable<any> =>
     this.http.get<Entity>(`${this.baseURL}${EntityEnum.STARSHIPS}/${id}`).pipe(
-      map(starship => starship.result.properties)
+      map(starship => starship.result.properties),
+      catchError((err, caught) => {
+        console.log(err, caught);
+        return ''
+      })
     )
 
   getRandomEntity = (type: EntityEnum): number => type === EntityEnum.PEOPLE ? Math.floor(Math.random() * HIGHEST_POPLE_ID) : Math.floor(Math.random() * HIGHEST_STARSHIP_ID);

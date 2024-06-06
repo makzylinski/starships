@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { EntityEnum } from 'src/app/models/entity.enum';
 import { AppService } from 'src/app/services/app.service';
 
@@ -10,6 +10,7 @@ import { AppService } from 'src/app/services/app.service';
 })
 
 export class EntitySwitcherComponent implements OnInit {
+  @Output() entityChanged: EventEmitter<EntityEnum> = new EventEmitter<EntityEnum>();
 
   activeEntity = EntityEnum.PEOPLE;
   public get EntityEnum() {
@@ -23,5 +24,6 @@ export class EntitySwitcherComponent implements OnInit {
 
   toggleEntity = (entity: EntityEnum) => {
     this.activeEntity = entity;
+    this.entityChanged.emit(entity)
   }
 }

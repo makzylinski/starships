@@ -1,7 +1,7 @@
 <div class="game">
 @if ((cardOne$ | async) && (cardTwo$ |async)) {
    
-        <app-entity-switcher></app-entity-switcher>
+        
         <div>
             <app-card [entity$]="cardOne$"></app-card>
         </div>
@@ -9,10 +9,10 @@
             <app-card [entity$]="cardTwo$"></app-card>
         </div>
         <div class="game__button">
-            <button mat-flat-button color="primary" (click)="fetchCards()">Play Again</button>
+            <button mat-flat-button color="primary">Play Again</button>
         </div>
     
 } @else {
     <mat-spinner></mat-spinner>
 }
-</div>
+</div><app-entity-switcher (entityChanged)="fetchCards($event)"></app-entity-switcher>
