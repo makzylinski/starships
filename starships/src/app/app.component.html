@@ -8,7 +8,7 @@
                 <app-card [name]="'Player 2'" [entity$]="cardTwo$"></app-card>
             </div>
         </div>
-        <div class="game__winner" style="color: white;">
+        <div class="game__winner">
             The winner is... {{winner | async}}
         </div>
     <div class="game__button">
@@ -19,7 +19,6 @@
     <mat-spinner></mat-spinner>
     }
 </div>
-
 
 <app-entity-switcher (entityChanged)="fetchCards($event)"></app-entity-switcher>
 
