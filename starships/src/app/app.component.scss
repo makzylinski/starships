@@ -1,9 +1,25 @@
 .game {
     background: radial-gradient(circle, rgba(10, 14, 34, 1) 0%, rgba(2, 2, 23, 1) 100%);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    gap: 75px;
+
+
+    &__cards {
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 75px;
+    }
+
+    &__winner {
+        font-size: 48px;
+        padding: 10px;
+        margin-bottom: 25px;
+        color: white;
+    }
 }

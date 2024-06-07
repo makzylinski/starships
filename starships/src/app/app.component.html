@@ -1,18 +1,25 @@
 <div class="game">
-@if ((cardOne$ | async) && (cardTwo$ |async)) {
-   
-        
-        <div>
-            <app-card [entity$]="cardOne$"></app-card>
+    @if ((cardOne$ | async) && (cardTwo$ | async)) {
+        <div class="game__cards">
+            <div>
+                <app-card [name]="'Player 1'" [entity$]="cardOne$"></app-card>
+            </div>
+            <div>
+                <app-card [name]="'Player 2'" [entity$]="cardTwo$"></app-card>
+            </div>
         </div>
-        <div>
-            <app-card [entity$]="cardTwo$"></app-card>
+        <div class="game__winner">
+            The winner is... {{winner | async}}
         </div>
-        <div class="game__button">
-            <button mat-flat-button color="primary">Play Again</button>
-        </div>
-    
-} @else {
+    <div class="game__button">
+        <button mat-flat-button color="primary" (click)="fetchCards(defaultEntityType)">Play Again</button>
+    </div>
+
+    } @else {
     <mat-spinner></mat-spinner>
-}
-</div><app-entity-switcher (entityChanged)="fetchCards($event)"></app-entity-switcher>
+    }
+</div>
+
+<app-entity-switcher (entityChanged)="fetchCards($event)"></app-entity-switcher>
+
+

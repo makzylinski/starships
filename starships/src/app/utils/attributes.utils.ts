@@ -11,5 +11,4 @@ const modifyAttributeDisplayName = (attribute: string) => {
     let modifiedAttribute = attribute.split('_').join(' ');
     modifiedAttribute = modifiedAttribute[0].toUpperCase() + modifiedAttribute.substring(1).toLocaleLowerCase();
     return modifiedAttribute;
-
 }
