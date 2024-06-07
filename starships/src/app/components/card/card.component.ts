@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Observable, map, tap } from 'rxjs';
+import { transformAttributesToListItems } from 'src/app/utils/attributes.utils';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +8,16 @@ import { Observable } from 'rxjs';
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   @Input() entity$: Observable<any>;
   @Input() name: string;
+
+  entityListItems: any;
+
+  ngOnInit() {
+    this.entity$.pipe(
+      map(entity => transformAttributesToListItems(entity)),
+      tap((transformedList) => this.entityListItems = transformedList)
+    ).subscribe();
+  }
 }
