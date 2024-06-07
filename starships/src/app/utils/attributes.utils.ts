@@ -1,5 +1,5 @@
 export const transformAttributesToListItems = (entity: any) => {
-    const modifiedListItems = [];       // TODO type
+    const modifiedListItems = [];
     for (const [k, v] of Object.entries(entity)) {
         modifiedListItems.push(`${modifyAttributeDisplayName(k)} - ${v}`);
     }
