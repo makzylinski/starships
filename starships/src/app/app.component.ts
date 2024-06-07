@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { AppService } from './services/app.service';
 import { Starship } from './models/starship';
 import { Person } from './models/person';
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
   }
 
   fetchCards = (type: EntityEnum): void => {
-    this.cardOne$ = this.appService.fetchCard(type);
-    this.cardTwo$ = this.appService.fetchCard(type);
+    this.cardOne$ = this.appService.fetchCard(type).pipe(shareReplay(1));
+    this.cardTwo$ = this.appService.fetchCard(type).pipe(shareReplay(1));
   }
 
 }
