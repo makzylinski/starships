@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, forkJoin, map } from 'rxjs';
 import { Person } from '../models/person';
 import { Entity } from '../models/entity';
 import { EntityEnum, } from '../models/entity.enum';
@@ -22,7 +22,7 @@ export class AppService {
   private getPeople = (id: number): Observable<any> =>
     this.http.get<Entity>(`${this.baseURL}${EntityEnum.PEOPLE}/${id}`).pipe(
       map(person => person.result.properties),
-      map(personProps => transformAttributesToListItems(personProps)),
+      // map(personProps => transformAttributesToListItems(personProps)),
       catchError((err, caught) => {
         this.openSnackBar(err.message, 'Error')
         console.log(err, caught);
@@ -33,7 +33,7 @@ export class AppService {
   private getStarships = (id: number): Observable<any> =>
     this.http.get<Entity>(`${this.baseURL}${EntityEnum.STARSHIPS}/${id}`).pipe(
       map(starship => starship.result.properties),
-      map(starshipProps => transformAttributesToListItems(starshipProps)),
+      // map(starshipProps => transformAttributesToListItems(starshipProps)),
       catchError((err, caught) => {
         this.openSnackBar(err.message, 'Error')
         console.log(err, caught);
@@ -49,5 +49,32 @@ export class AppService {
     this.snackBar.open(message, action, { 
       duration: 3500, 
     }); 
-  } 
+  }
+
+  determineWinner = (cardOne$: Observable<any>, cardTwo$: Observable<any>, type: EntityEnum) => 
+    forkJoin([cardOne$, cardTwo$]).pipe(
+      map(([cardOne, cardTwo]) => {
+        let winner: EntityEnum;
+        if (cardOne && cardTwo) {
+          
+          if(type === EntityEnum.PEOPLE) {
+            const cardOneMass = parseInt(cardOne.mass);
+            const cardTwoMass = parseInt(cardTwo.mass);
+  
+            if(cardOneMass > cardTwoMass) winner = EntityEnum.PLAYER_1
+            else if (cardOneMass < cardTwoMass) winner = EntityEnum.PLAYER_2
+            else winner = EntityEnum.DRAW
+          } else {
+            const cardOneCrew = parseInt(cardOne.crew);
+            const cardTwoCrew = parseInt(cardTwo.crew);
+
+            if(cardOneCrew > cardTwoCrew) winner = EntityEnum.PLAYER_1
+            else if (cardOneCrew < cardTwoCrew) winner = EntityEnum.PLAYER_2
+            else winner = EntityEnum.DRAW
+          }
+
+        return winner;
+      }})
+    )
+  
 }
