@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, forkJoin, map } from 'rxjs';
+import { EMPTY, Observable, catchError, forkJoin, map } from 'rxjs';
 import { Entity } from '../models/entity';
 import { EntityEnum, } from '../models/entity.enum';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,9 +21,8 @@ export class AppService {
     this.http.get<Entity>(`${this.baseURL}${EntityEnum.PEOPLE}/${id}`).pipe(
       map(person => person.result.properties),
       catchError((err, caught) => {
-        this.openSnackBar(err.message, 'Error')
-        console.log(err, caught);
-        return ''
+        this.openSnackBar(err.message, 'Error');
+        return EMPTY;
       })
     );
 
@@ -33,7 +32,7 @@ export class AppService {
       catchError((err, caught) => {
         this.openSnackBar(err.message, 'Error')
         console.log(err, caught);
-        return ''
+        return EMPTY;
       })
     )
 

@@ -12,8 +12,8 @@ export interface Starship {
     cargo_capacity: string,
     consumables: string,
     pilots: [],
-    created: string, // Date
-    edited: string, // Date
+    created: Date,
+    edited: Date,
     name: string,
     url: string
 }
