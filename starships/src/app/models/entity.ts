@@ -1,11 +1,13 @@
+import { Person } from "./person";
+import { Starship } from "./starship";
+
 export interface Entity {
-    message: string,
+    message: string;
     result: {
-        properties: {
-        },
-        description: string,
-        _id: string,
-        uid: string,
-        __v: number
-    }
+      properties: Person | Starship;
+      description: string;
+      _id: string;
+      uid: string;
+      __v: number;
+    };
 }
