@@ -1,8 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Observable, shareReplay, tap } from 'rxjs';
 import { AppService } from './services/app.service';
-import { Starship } from './models/starship';
-import { Person } from './models/person';
 import { EntityEnum } from './models/entity.enum';
 
 @Component({
@@ -15,7 +13,7 @@ export class AppComponent implements OnInit {
   defaultEntityType = EntityEnum.PEOPLE;
   cardOne$: Observable<any>;
   cardTwo$: Observable<any>;
-  winner: any;
+  winnerData$: Observable<any>;
 
   private readonly appService = inject(AppService)
 
@@ -27,7 +25,7 @@ export class AppComponent implements OnInit {
     this.cardOne$ = this.appService.fetchCard(type).pipe(shareReplay(1));
     this.cardTwo$ = this.appService.fetchCard(type).pipe(shareReplay(1));
 
-    this.winner = this.appService.determineWinner(this.cardOne$, this.cardTwo$, type)
+    this.winnerData$ = this.appService.determineWinner(this.cardOne$, this.cardTwo$, type)
   }
 
 }

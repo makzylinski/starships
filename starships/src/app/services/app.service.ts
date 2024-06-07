@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, forkJoin, map } from 'rxjs';
-import { Person } from '../models/person';
 import { Entity } from '../models/entity';
 import { EntityEnum, } from '../models/entity.enum';
-import { transformAttributesToListItems } from '../utils/attributes.utils';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 const HIGHEST_POPLE_ID = 83;
@@ -22,7 +20,6 @@ export class AppService {
   private getPeople = (id: number): Observable<any> =>
     this.http.get<Entity>(`${this.baseURL}${EntityEnum.PEOPLE}/${id}`).pipe(
       map(person => person.result.properties),
-      // map(personProps => transformAttributesToListItems(personProps)),
       catchError((err, caught) => {
         this.openSnackBar(err.message, 'Error')
         console.log(err, caught);
@@ -33,7 +30,6 @@ export class AppService {
   private getStarships = (id: number): Observable<any> =>
     this.http.get<Entity>(`${this.baseURL}${EntityEnum.STARSHIPS}/${id}`).pipe(
       map(starship => starship.result.properties),
-      // map(starshipProps => transformAttributesToListItems(starshipProps)),
       catchError((err, caught) => {
         this.openSnackBar(err.message, 'Error')
         console.log(err, caught);
@@ -73,8 +69,25 @@ export class AppService {
             else winner = EntityEnum.DRAW
           }
 
-        return winner;
+          if (winner === EntityEnum.PLAYER_1) this.updatePlayerWinCount(EntityEnum.PLAYER_1);
+          else if (winner === EntityEnum.PLAYER_2) this.updatePlayerWinCount(EntityEnum.PLAYER_2);
+
+        return {
+          winner,
+          playerOneScore: this.getPlayerWinCount(EntityEnum.PLAYER_1),
+          playerTwoScore: this.getPlayerWinCount(EntityEnum.PLAYER_2)
+        }
       }})
     )
   
+  getPlayerWinCount = (player: EntityEnum) => {
+    const winCount = localStorage.getItem(player);
+    return winCount ? parseInt(winCount) : 0;
+  }
+
+  updatePlayerWinCount = (player: EntityEnum) => {
+    const currentPlayerWinCount = this.getPlayerWinCount(player);
+    const updatedPlayerCount = currentPlayerWinCount + 1;
+    localStorage.setItem(player, updatedPlayerCount.toString());
+  }
 }
