@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
 
   entityListItems: any;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.entity$.pipe(
       map(entity => transformAttributesToListItems(entity)),
       tap((transformedList) => this.entityListItems = transformedList)
