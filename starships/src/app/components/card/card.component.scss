@@ -15,6 +15,12 @@
         gap: 10px;
         list-style-type: none;
         padding: 0;
+
+        & li {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 
     &:hover {
