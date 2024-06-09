@@ -1,9 +1,9 @@
-<div class="switcher">
-    <div class="switcher__people" [ngClass]="{'active': activeEntity === EntityEnum.PEOPLE}" (click)="toggleEntity(EntityEnum.PEOPLE)">
+<div class="switcher" data-test-id="entity-switcher-container">
+    <div class="switcher__people" [ngClass]="{'active': activeEntity === EntityEnum.PEOPLE}" (click)="toggleEntity(EntityEnum.PEOPLE)" data-test-id="entity-switcher-people">
         <mat-icon>people</mat-icon>
     </div>
     <div class="switcher__divider"></div>
-    <div class="switcher__starships" [ngClass]="{'active': activeEntity === EntityEnum.STARSHIPS}"  (click)="toggleEntity(EntityEnum.STARSHIPS)">
+    <div class="switcher__starships" [ngClass]="{'active': activeEntity === EntityEnum.STARSHIPS}"  (click)="toggleEntity(EntityEnum.STARSHIPS)" data-test-id="entity-switcher-starships">
         <mat-icon>rocket_launch</mat-icon>
     </div>
 </div>
