@@ -2,16 +2,16 @@
     @if ((cardOne$ | async) && (cardTwo$ | async)) {
     
     @if (winnerData$ | async; as winnerData) {
-        <div class="game__winner">
+        <div class="game__winner" data-test-id="game-winner">
             The winner is... {{ winnerData.winner }}
         </div>
 
         <div class="game__score">
-            <div class="game__score--player">
+            <div class="game__score--player" data-test-id="player-one-score">
                 Player One: {{ winnerData.playerOneScore }}
             </div>
     
-            <div class="game__score--player">
+            <div class="game__score--player" data-test-id="player-two-score">
                 Player Two: {{ winnerData.playerTwoScore }}
             </div>
         </div>
@@ -27,7 +27,7 @@
         </div>
     </div>
     
-    <div class="game__button">
+    <div class="game__button" data-test-id="play-again-button">
         <button mat-flat-button color="primary" (click)="fetchCards(defaultEntityType)">Play Again</button>
     </div>
 

@@ -1,0 +1,11 @@
+{
+    "/api": {
+      "target": "https://www.swapi.tech",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
