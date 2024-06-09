@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map, take, tap } from 'rxjs';
 import { Person } from 'src/app/models/person';
 import { Starship } from 'src/app/models/starship';
 import { transformAttributesToListItems } from 'src/app/utils/attributes.utils';
@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
   @Input() entity$: Observable<Person | Starship>;
   @Input() name: string;
 
-  entityListItems: any;
+  entityListItems: string[];
 
   ngOnInit(): void {
     this.entity$.pipe(

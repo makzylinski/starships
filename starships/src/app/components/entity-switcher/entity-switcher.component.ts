@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { EntityEnum } from 'src/app/models/entity.enum';
-import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-entity-switcher',
@@ -16,7 +15,6 @@ export class EntitySwitcherComponent {
   public get EntityEnum() {
     return EntityEnum;
   }
-  private readonly appService = inject(AppService)
 
   toggleEntity = (entity: EntityEnum): void => {
     this.activeEntity = entity;

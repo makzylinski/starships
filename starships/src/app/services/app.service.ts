@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { EMPTY, Observable, catchError, forkJoin, map, tap } from 'rxjs';
+import { EMPTY, Observable, catchError, forkJoin, map } from 'rxjs';
 import { Entity } from '../models/entity';
 import { EntityEnum, } from '../models/entity.enum';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -33,7 +33,6 @@ export class AppService {
       map(starship => starship.result.properties),
       catchError((err, caught) => {
         this.openSnackBar(err.message, 'Error')
-        console.log(err, caught);
         return EMPTY;
       })
     )
